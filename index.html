@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Реестр резидентов ТОР Оренбургской области — справочник</title>
+<meta name="description" content="Справочный снимок Реестра резидентов территорий опережающего развития Оренбургской области. Поиск по наименованию, ИНН, ОГРН и адресу.">
+<link rel="icon" type="image/svg+xml" href="https://prog815.github.io/favicon.svg?v=1.0.0">
+<meta name="theme-color" content="#f5f7fb">
+
+<!-- JSON-LD микроразметка -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "Реестр резидентов ТОР Оренбургской области",
+  "description": "Справочный снимок открытых данных Минэкономразвития Оренбургской области",
+  "url": "https://prog815.github.io/tor-residents/",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Экосистема «Классик»",
+    "url": "https://prog815.github.io/"
+  },
+  "author": {
+    "@type": "Person",
+    "sameAs": [
+      "https://m.vk.ru/alekseyenin",
+      "https://t.me/AlekseyEnin",
+      "https://max.ru/channel_prog815",
+      "https://www.linkedin.com/in/eavprog/"
+    ]
+  }
+}
+</script>
+
+<!-- Yandex.Metrika counter -->
+<script>
+  (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+  m[i].l=1*new Date();
+  for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+  k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+  (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+  ym(105817342, "init", {
+    clickmap: true,
+    trackLinks: true,
+    accurateTrackBounce: true
+  });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/105817342" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SM54ENZHYS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-SM54ENZHYS');
+</script>
+<!-- /Google tag -->
+
+<!-- Общие ассеты хаба -->
+<script src="https://prog815.github.io/share.js?v=1.0.1" defer></script>
+
+<style>
+  :root{
+    --bg:#f5f7fb; --panel:#ffffff; --ink:#0f172a; --muted:#5b6b7f;
+    --line:#e2e8f0; --brand:#2563eb; --brand-d:#1d4ed8; --accent:#eff6ff;
+    --mark:#fef08a; --shadow:0 1px 2px rgba(15,23,42,.06),0 8px 24px rgba(15,23,42,.06);
+    --radius:16px; --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    --od:#7c3aed; --od-bg:#f3e8ff; 
+  }
+  @media(prefers-color-scheme:dark){
+    :root{
+      --bg:#0b1120; --panel:#111a2c; --ink:#e6edf7; --muted:#94a3b8;
+      --line:#1e293b; --brand:#60a5fa; --brand-d:#3b82f6; --accent:rgba(96,165,250,.12);
+      --mark:#854d0e; --od:#a78bfa; --od-bg:rgba(167,139,250,.15);
+      --shadow:0 1px 2px rgba(0,0,0,.4);
+    }
+  }
+
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg); color:var(--ink);
+    font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+    -webkit-text-size-adjust:100%;
+  }
+  a{color:var(--brand)}
+  .wrap{max-width:980px;margin:0 auto;padding:0 14px}
+
+  /* Баннер хаба */
+  .klassik-banner{display:block;max-width:1200px;margin:0 auto;padding:8px 16px;text-decoration:none;opacity:.9}
+  .klassik-banner:hover{opacity:1}
+  .klassik-banner img{display:block;width:100%;height:auto}
+
+  header.hero{padding:16px 0 6px}
+  h1{font-size:24px;margin:0 0 4px;letter-spacing:-.02em}
+  .sub{color:var(--muted);margin:0 0 12px;font-size:14px}
+
+  /* Поисковая строка */
+  .search-container{padding:12px 0 8px}
+  .searchbar{display:flex; gap:8px; align-items:stretch}
+  .searchbar input[type=text]{
+    flex:1; min-width:0; font-size:16px; padding:12px 16px;
+    border:1px solid var(--line); border-radius:var(--radius);
+    background:var(--panel); color:var(--ink); outline:none;
+    transition:border-color .2s;
+  }
+  .searchbar input[type=text]:focus{border-color:var(--brand); box-shadow:0 0 0 3px var(--accent)}
+
+  .meta-line{
+    display:flex; justify-content:space-between; align-items:center;
+    margin:12px 2px 8px; font-size:13px; color:var(--muted);
+  }
+  .meta-line .count b{color:var(--ink)}
+  .meta-line .clear-link{color:var(--muted); text-decoration:underline dashed; cursor:pointer}
+  .meta-line .clear-link:hover{color:var(--brand)}
+
+  #status{padding:30px 4px; text-align:center; color:var(--muted)}
+  #status .err{color:#e11d48}
+
+  #results{display:flex; flex-direction:column; gap:12px; padding-bottom:8px}
+
+  .card{
+    background:var(--panel); border:1px solid var(--line);
+    border-radius:var(--radius); padding:16px;
+    box-shadow:var(--shadow); position:relative;
+    transition:border-color .2s;
+  }
+  .card:hover{border-color:var(--brand)}
+  .card.highlight{border-color:var(--brand); box-shadow:0 0 0 2px var(--accent), var(--shadow)}
+
+  .row1{display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:12px}
+  
+  .id-badge{
+    font-family:var(--mono); font-size:12px; font-weight:600;
+    background:var(--accent); color:var(--brand-d);
+    border:1px solid var(--line); border-radius:6px;
+    padding:2px 8px; cursor:pointer;
+  }
+  .id-badge:hover{border-color:var(--brand)}
+
+  .tag{
+    font-size:11px; font-weight:600; border-radius:999px; padding:2px 10px;
+    background:var(--od-bg); color:var(--od); border:1px solid rgba(124,58,237,.2);
+  }
+
+  .name{
+    font-size:16px; font-weight:600; line-height:1.4; margin-bottom:12px; color:var(--ink);
+    white-space: pre-wrap;
+  }
+  
+  mark { background:var(--mark); color:inherit; border-radius:2px; padding:0 1px; }
+
+  .info-row{
+    display:flex; flex-wrap:wrap; gap:8px 16px; font-size:13px; color:var(--muted);
+    margin-bottom:16px; padding:10px 12px; background:var(--bg); border-radius:8px;
+  }
+  .info-item{display:flex; align-items:flex-start; gap:6px; line-height:1.4;}
+  .info-item.full-width{flex: 1 1 100%;}
+
+  .actions{
+    display:flex; flex-wrap:wrap; align-items:center; gap:8px;
+    padding-top:12px; border-top:1px dashed var(--line);
+  }
+  .action-btn{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:12px; font-weight:500; color:var(--muted);
+    background:transparent; border:1px solid transparent;
+    border-radius:6px; padding:4px 8px; cursor:pointer;
+    transition:all .2s; font-family:inherit;
+  }
+  .action-btn:hover{background:var(--accent); color:var(--brand-d); border-color:var(--accent)}
+
+  .share-slot{display:inline-flex}
+  .share-slot klassik-share { display: inline-flex; align-items: center; }
+
+  .more{
+    display:block; width:100%; margin:16px 0; padding:14px;
+    font-size:14px; font-weight:600; border:1px solid var(--line);
+    border-radius:var(--radius); background:var(--panel);
+    color:var(--brand); cursor:pointer;
+  }
+  .more:hover{border-color:var(--brand); background:var(--accent)}
+  .more[hidden]{display:none!important}
+
+  footer{margin:40px 0; padding-top:20px; border-top:1px solid var(--line); color:var(--muted); font-size:13px}
+  footer .stats{margin:0 0 4px; font-weight:500; color:var(--ink)}
+  footer .date-line{margin:0 0 16px; font-size:12px}
+  footer .links{display:flex; flex-direction:column; gap:12px}
+  footer .row-label{font-size:12px; color:var(--muted); margin-bottom:2px}
+  footer a{text-decoration:none}
+  footer a:hover{text-decoration:underline}
+  
+  footer .disc{
+    font-size:12px; margin-top:16px; line-height:1.5;
+    background:var(--od-bg); border:1px solid rgba(124,58,237,.2);
+    border-radius:10px; padding:12px 14px; color:var(--ink);
+  }
+
+  .fab{
+    position:fixed; right:20px; width:44px; height:44px; border-radius:50%;
+    border:1px solid var(--line); background:var(--panel); color:var(--brand-d);
+    font-size:20px; cursor:pointer; box-shadow:var(--shadow);
+    display:none; align-items:center; justify-content:center; z-index:40;
+  }
+  .fab.up{bottom:80px} .fab.down{bottom:24px} .fab.show{display:flex}
+
+  .toast{
+    position:fixed; left:50%; bottom:24px; transform:translateX(-50%) translateY(20px);
+    background:var(--ink); color:var(--bg); padding:10px 16px; border-radius:99px;
+    font-size:13px; font-weight:500; opacity:0; pointer-events:none;
+    transition:opacity .2s, transform .2s; z-index:60;
+  }
+  .toast.show{opacity:1; transform:translateX(-50%) translateY(0)}
+
+  .noscript-msg {
+    background: #fff3cd; color: #856404; padding: 15px; border-radius: 8px; margin: 20px 0; border: 1px solid #ffeeba;
+  }
+
+  @media(max-width:640px){
+    .klassik-banner{padding:4px 8px}
+    .wrap{padding:0 12px}
+    .name{font-size:15px}
+    .info-item{flex: 1 1 100%;} /* На мобильных адрес, ИНН и ОГРН будут друг под другом */
+  }
+</style>
+</head>
+<body>
+
+<!-- Ссылка на центральный хаб -->
+<a class="klassik-banner" href="https://prog815.github.io/" title="На главную — все справочники">
+  <img src="https://prog815.github.io/banner.svg?v=1.0.0" alt="Экосистема «Классик» — все справочники">
+</a>
+
+<div class="wrap">
+  <header class="hero">
+    <h1>Реестр резидентов ТОР</h1>
+    <p class="sub">Справочный снимок открытых данных Минэкономразвития Оренбургской области.</p>
+  </header>
+
+  <noscript>
+    <div class="noscript-msg">
+      Для работы поиска и отображения карточек необходим JavaScript. 
+      Вы можете ознакомиться с официальным первоисточником по ссылке в футере сайта.
+    </div>
+  </noscript>
+
+  <div class="search-container">
+    <div class="searchbar">
+      <input id="q" type="text" autocomplete="off" spellcheck="false"
+             placeholder="Наименование, ИНН, ОГРН или адрес..." title="Введите наименование резидента, ИНН, ОГРН или адрес для поиска">
+    </div>
+  </div>
+
+  <div class="meta-line">
+    <div class="count" id="count">Загрузка...</div>
+    <div class="clear-link" id="clear-all" style="display:none" title="Сбросить поисковый запрос и показать все записи">Очистить</div>
+  </div>
+
+  <div id="status">Загрузка данных реестра...</div>
+  
+  <!-- Сюда JS будет рендерить карточки -->
+  <div id="results"></div>
+  
+  <button class="more" id="more" hidden>Показать ещё</button>
+
+  <!-- Весь футер жестко прописан в HTML для поисковиков -->
+  <footer>
+    <p class="stats" id="footstats">Справочный снимок реестра.</p>
+    <p class="date-line" id="footdate"></p>
+
+    <div class="links">
+      <div>
+        <div class="row-label">Источник данных (машиночитаемый снимок):</div>
+        <a href="https://data.gov.ru/datasets/555d008f-e5f6-4acd-bfae-da18204a5384" target="_blank" rel="noopener">data.gov.ru — Реестр резидентов ТОР</a>
+      </div>
+      <div>
+        <div class="row-label">Первоисточники и текстовые редакции для сверки:</div>
+        <a href="https://data.gov.ru/" target="_blank" rel="noopener">Минэкономразвития Оренбургской области</a> · 
+        <a href="https://github.com/prog815/tor-residents" target="_blank" rel="noopener" title="Исходный код и описание справочника">О справочнике</a>
+      </div>
+      <div>
+        <div class="row-label">Экосистема проектов:</div>
+        <a href="https://prog815.github.io/" target="_blank" rel="noopener">Центральный хаб «Классик»</a>
+      </div>
+      <div>
+        <div class="row-label">Обсуждение проекта и обратная связь:</div>
+        <a href="https://m.vk.ru/alekseyenin" target="_blank" rel="me noopener">ВКонтакте</a> ·
+        <a href="https://t.me/eavprog" target="_blank" rel="me noopener">Telegram</a> ·
+        <a href="https://max.ru/channel_prog815" target="_blank" rel="me noopener">MAX</a> ·
+        <a href="https://www.linkedin.com/in/eavprog/" target="_blank" rel="me noopener">LinkedIn</a>
+      </div>
+    </div>
+
+    <p class="disc">
+      Данные предоставляются как есть, на дату снимка. 
+      Не заменяет официальные публикации и правовые акты.<br><br>
+      Справочный снимок официального реестра. Данные обновляются еженедельно.
+    </p>
+  </footer>
+</div>
+
+<button class="fab up" id="fabUp" title="Прокрутить страницу наверх">↑</button>
+<button class="fab down" id="fabDown" title="Прокрутить страницу вниз">↓</button>
+<div class="toast" id="toast">Скопировано</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var PAGE = 20;
+  var DATA = [];
+  var META = null;
+  var activeDeepLinkCode = null;
+  var view = { list: [], shown: 0 };
+
+  var els = {
+    q: document.getElementById('q'),
+    clearAll: document.getElementById('clear-all'),
+    count: document.getElementById('count'),
+    status: document.getElementById('status'),
+    results: document.getElementById('results'),
+    more: document.getElementById('more'),
+    footstats: document.getElementById('footstats'),
+    footdate: document.getElementById('footdate'),
+    fabUp: document.getElementById('fabUp'),
+    fabDown: document.getElementById('fabDown'),
+    toast: document.getElementById('toast')
+  };
+
+  function esc(s){
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+    });
+  }
+  function escRe(s){ return String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+  function normName(s){ return String(s == null ? '' : s).toLowerCase().replace(/ё/g, 'е').replace(/\s+/g, ' ').trim(); }
+  function fmt(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); }
+  
+  // Форматирует дату из YYYY-MM-DD в DD.MM.YYYY
+  function formatDate(isoStr) {
+    if (!isoStr) return '';
+    var parts = isoStr.split('-');
+    if (parts.length === 3) return parts[2] + '.' + parts[1] + '.' + parts[0];
+    return isoStr;
+  }
+
+  function highlight(text, tokens) {
+    if (!tokens || !tokens.length) return esc(text);
+    var html = esc(text);
+    for (var i=0; i<tokens.length; i++) {
+      var t = tokens[i];
+      if (!t) continue;
+      var re = new RegExp('(' + escRe(esc(t)) + ')', 'gi');
+      html = html.replace(re, '<mark>$1</mark>');
+    }
+    return html;
+  }
+
+  async function loadJsonGz(url){
+    var r = await fetch(url, { cache: 'no-cache' });
+    if(!r.ok) throw new Error('HTTP ' + r.status);
+    if(typeof DecompressionStream === 'undefined') throw new Error('DecompressionStream не поддерживается браузером');
+    
+    var decompressed = r.body.pipeThrough(new DecompressionStream('gzip'));
+    var text = await new Response(decompressed).text();
+    return JSON.parse(text);
+  }
+
+  function syncCodeToUrl(code) {
+    var url = new URL(window.location);
+    if (code) url.searchParams.set('code', code);
+    else url.searchParams.delete('code');
+    history.replaceState(null, '', url.toString());
+  }
+
+  function clearCodeFromUrl() { syncCodeToUrl(null); }
+
+  function updateClearVisibility() {
+    var hasQuery = String(els.q.value || '').length > 0;
+    var hasCode = !!activeDeepLinkCode;
+    els.clearAll.style.display = (hasQuery || hasCode) ? 'block' : 'none';
+  }
+
+  async function boot(){
+    try{
+      var base = location.pathname.replace(/index\.html$/, '');
+      if(base.charAt(base.length - 1) !== '/') base += '/';
+
+      var raw = await loadJsonGz(base + 'tor.json.gz');
+      META = await loadJsonGz(base + 'tor_meta.json.gz');
+
+      if(!Array.isArray(raw)) throw new Error('bad data shape');
+
+      // Маппинг полей TOR: [id, name, inn, ogrn, address, date, source_order]
+      DATA = raw.map(function(it) {
+        return {
+          id: String(it[0] || ''),
+          name: String(it[1] || ''),
+          inn: String(it[2] || ''),
+          ogrn: String(it[3] || ''),
+          address: String(it[4] || ''),
+          date: String(it[5] || ''),
+          source_order: it[6]
+        };
+      });
+
+      // Подставляем данные в статический футер
+      if (META) {
+        els.footstats.textContent = 'В справочнике ' + fmt(META.records_count) + ' записей.';
+        els.footdate.textContent = META.change_display || '';
+      }
+      
+      els.status.style.display = 'none';
+
+      var urlParams = new URLSearchParams(window.location.search);
+      var codeParam = urlParams.get('code');
+      if (codeParam) {
+        activeDeepLinkCode = codeParam;
+        els.q.value = codeParam;
+      }
+
+      runSearch();
+    }catch(err){
+      console.error(err);
+      els.status.innerHTML = '<div class="err">Ошибка загрузки: ' + esc(err.message) + '</div>' +
+        '<div style="margin-top:12px"><button class="btn" onclick="location.reload()">Повторить</button></div>';
+    }
+  }
+
+  function runSearch(){
+    var query = normName(els.q.value);
+    var tokens = query.split(' ').filter(Boolean);
+
+    if (tokens.length === 0) {
+      view.list = DATA;
+    } else {
+      view.list = DATA.filter(function(r){
+        // Поиск по всем полям, включая адрес и ОГРН
+        var blob = normName(r.id + ' ' + r.name + ' ' + r.inn + ' ' + r.ogrn + ' ' + r.address + ' ' + r.date);
+        for(var i=0; i<tokens.length; i++){
+          if(blob.indexOf(tokens[i]) === -1) return false;
+        }
+        return true;
+      });
+    }
+
+    view.shown = 0;
+    els.results.innerHTML = '';
+    renderCount();
+    renderMore();
+    appendPage();
+    updateClearVisibility();
+  }
+
+  function renderCount(){
+    var total = view.list.length;
+    var shown = Math.min(view.shown, total);
+    els.count.innerHTML = 'Найдено: <b>' + fmt(total) + '</b> · Показано: <b>' + fmt(shown) + '</b>';
+  }
+
+  function renderMore(){
+    var total = view.list.length;
+    var shown = Math.min(view.shown, total);
+    if(shown >= total || total === 0){
+      els.more.hidden = true;
+    } else {
+      els.more.hidden = false;
+      els.more.textContent = 'Показать ещё +' + PAGE + ' (показано ' + fmt(shown) + ' из ' + fmt(total) + ')';
+    }
+  }
+
+  function appendPage(){
+    var total = view.list.length;
+    if(total === 0){
+      els.results.innerHTML = '<div style="padding:32px 4px;text-align:center;color:var(--muted)">Ничего не найдено.</div>';
+      renderCount(); renderMore(); return;
+    }
+
+    var end = Math.min(view.shown + PAGE, total);
+    var html = [];
+    var queryTokens = els.q.value.trim().split(/\s+/).filter(Boolean);
+
+    for(var i=view.shown; i<end; i++){
+      html.push(cardHTML(view.list[i], queryTokens));
+    }
+    els.results.insertAdjacentHTML('beforeend', html.join(''));
+    
+    bindShareButtons();
+    
+    view.shown = end;
+    renderCount();
+    renderMore();
+  }
+
+  function bindShareButtons() {
+    if (!window.customElements || !customElements.get('klassik-share')) {
+      return;
+    }
+    var slots = els.results.querySelectorAll('.share-slot');
+    for (var j=0; j<slots.length; j++) {
+      var fallback = slots[j].querySelector('.btn-share-fallback');
+      if (!fallback) continue; 
+
+      var id = slots[j].getAttribute('data-id');
+      var nameText = slots[j].getAttribute('data-name');
+      var url = window.location.origin + window.location.pathname + '?code=' + id;
+
+      var el = document.createElement('klassik-share');
+      el.setAttribute('catalog', 'tor-residents');
+      el.setAttribute('title', 'Реестр резидентов ТОР');
+      el.setAttribute('text', nameText);
+      el.setAttribute('url', url);
+
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'action-btn';
+      btn.title = 'Поделиться этой записью';
+      btn.setAttribute('aria-label', 'Поделиться записью');
+      btn.textContent = '📤 Поделиться';
+      
+      el.appendChild(btn);
+      slots[j].replaceChild(el, fallback);
+    }
+  }
+
+  if (window.customElements) {
+    customElements.whenDefined('klassik-share').then(bindShareButtons);
+  }
+
+  function cardHTML(r, queryTokens){
+    var isHighlight = (r.id === activeDeepLinkCode);
+    
+    var nameHtml = highlight(r.name, queryTokens);
+    var idHtml = highlight(r.id, queryTokens);
+    var innHtml = highlight(r.inn, queryTokens);
+    var ogrnHtml = highlight(r.ogrn, queryTokens);
+    var dateHtml = highlight(formatDate(r.date), queryTokens);
+    var addressHtml = highlight(r.address, queryTokens);
+
+    // Формируем красивую строку данных (внутри карточки)
+    var rowInfo = '';
+    if (r.inn) {
+      rowInfo += '<div class="info-item" title="ИНН">🆔 <span>ИНН: ' + innHtml + '</span></div>';
+    }
+    if (r.ogrn) {
+      rowInfo += '<div class="info-item" title="ОГРН">📄 <span>ОГРН: ' + ogrnHtml + '</span></div>';
+    }
+    if (r.date) {
+      rowInfo += '<div class="info-item" title="Дата внесения в реестр">📅 <span>' + dateHtml + '</span></div>';
+    }
+    if (r.address) {
+      rowInfo += '<div class="info-item full-width" title="Юридический адрес">📍 <span>' + addressHtml + '</span></div>';
+    }
+
+    // Строка для кнопки "Скопировать строку"
+    var copyStr = r.name + '; ИНН: ' + r.inn + '; ОГРН: ' + r.ogrn + '; ' + r.address + '; ' + formatDate(r.date);
+
+    return '<article class="card' + (isHighlight ? ' highlight' : '') + '" title="' + esc(r.name) + '">' +
+      '<div class="row1">' +
+        '<span class="id-badge" data-id="' + r.id + '" title="Кликните, чтобы скопировать уникальный идентификатор: ' + r.id + '">' + idHtml + '</span>' +
+        '<span class="tag" title="Ведомство: Минэкономразвития Оренбургской области">ТОР</span>' +
+      '</div>' +
+      '<div class="name" title="' + esc(r.name) + '">' + nameHtml + '</div>' +
+      (rowInfo ? '<div class="info-row">' + rowInfo + '</div>' : '') +
+      '<div class="actions">' +
+        '<button type="button" class="action-btn btn-copy-row" data-str="' + esc(copyStr) + '" title="Скопировать одной строкой: наименование, ИНН, ОГРН, адрес, дата" aria-label="Скопировать строку с данными">📋 строка</button>' +
+        '<div class="share-slot" data-id="' + r.id + '" data-name="' + esc(r.name) + '">' +
+          '<button type="button" class="action-btn btn-share-fallback" data-id="' + r.id + '" data-name="' + esc(r.name) + '" title="Поделиться этой записью" aria-label="Поделиться записью">📤 Поделиться</button>' +
+        '</div>' +
+      '</div>' +
+    '</article>';
+  }
+
+  var debTimer = null;
+  els.q.addEventListener('input', function(){
+    activeDeepLinkCode = null;
+    clearCodeFromUrl();
+    updateClearVisibility();
+    clearTimeout(debTimer);
+    debTimer = setTimeout(runSearch, 180);
+  });
+
+  function clearAllAction() {
+    els.q.value = '';
+    activeDeepLinkCode = null;
+    clearCodeFromUrl();
+    updateClearVisibility();
+    runSearch();
+    els.q.focus();
+  }
+
+  els.clearAll.addEventListener('click', clearAllAction);
+  els.more.addEventListener('click', appendPage);
+
+  els.results.addEventListener('click', function(ev){
+    var idBadge = ev.target.closest('.id-badge');
+    if(idBadge) {
+      var id = idBadge.getAttribute('data-id');
+      navigator.clipboard.writeText(id).then(function(){
+        showToast('Скопировано: ' + id);
+        try { if (window.ym) window.ym(105817342, 'reachGoal', 'tor_copy_id'); } catch (e) {}
+        try { if (window.gtag) window.gtag('event', 'copy_id', { id: id }); } catch (e) {}
+      });
+      return;
+    }
+
+    var btnCopy = ev.target.closest('.btn-copy-row');
+    if(btnCopy) {
+      var text = btnCopy.getAttribute('data-str');
+      navigator.clipboard.writeText(text).then(function(){
+        showToast('Строка скопирована');
+        try { if (window.ym) window.ym(105817342, 'reachGoal', 'tor_copy_row'); } catch (e) {}
+        try { if (window.gtag) window.gtag('event', 'copy_row'); } catch (e) {}
+      });
+      return;
+    }
+
+    var btnShare = ev.target.closest('.btn-share-fallback');
+    if(btnShare) {
+      var id = btnShare.getAttribute('data-id');
+      var name = btnShare.getAttribute('data-name');
+      var url = window.location.origin + window.location.pathname + '?code=' + id;
+      var shareText = name + '\nКод: ' + id + '\n' + url;
+
+      if (navigator.share) {
+        navigator.share({
+          title: 'Реестр резидентов ТОР',
+          text: name,
+          url: url
+        }).catch(console.error);
+      } else {
+        navigator.clipboard.writeText(shareText).then(function(){
+          showToast('Ссылка скопирована');
+        });
+      }
+      
+      try { if (window.ym) window.ym(105817342, 'reachGoal', 'tor_share_fallback'); } catch (e) {}
+      try { if (window.gtag) window.gtag('event', 'share_fallback'); } catch (e) {}
+      
+      return;
+    }
+  });
+
+  var toastTimer = null;
+  function showToast(msg){
+    els.toast.textContent = msg;
+    els.toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ els.toast.classList.remove('show'); }, 1800);
+  }
+
+  function onScroll(){
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    els.fabUp.classList.toggle('show', y > 300);
+    els.fabDown.classList.toggle('show', y > 300 && y < max - 40);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  els.fabUp.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  els.fabDown.addEventListener('click', function(){ window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }); });
+
+  boot();
+})();
+</script>
+</body>
+</html>
